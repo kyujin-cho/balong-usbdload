@@ -324,12 +324,12 @@ printf("\n Утилита предназначена для аварийной U
 "-p # - number of serial port for communication with the loader (e.g. -p8)\n"
 "  If the -p key is not specified, port auto-detection is performed"
 #endif
-"-f - load usbloader only before fastboot (without starting linux)\n\.
--b - similar to -f, additionally disable checking of defective blocks during erasing
+"-f - load usbloader only before fastboot (without starting linux)\n\
+-b - similar to -f, additionally disable checking of defective blocks during erasing\n\
 -t <file> - fetch partition table from specified file\n\
--m - show boot loader partition table and terminate the work\n\.
+-m - show boot loader partition table and terminate the work\n\
 -s n - set file flag for partition n (the key can be specified several times)\n\
--c - do not perform automatic partition erase patch\n 
+-c - do not perform automatic partition erase patch\n\
 \n",argv[0]);
     return;
 
