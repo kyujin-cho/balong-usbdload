@@ -70,13 +70,13 @@ printf("\n Утилита для замены таблицы разделов в
   }  
 }  
 if (optind>=argc) {
-    printf("\n - Не указано имя файла загрузчика\n");
+    printf("\n - No boot loader file name is specified");
     return;
 }  
 
 ldr=fopen(argv[optind],"r+b");
 if (ldr == 0) {
-  printf("\n Ошибка открытия файла %s\n",argv[optind]);
+  printf("\n Error opening file %s\n",argv[optind]);
   return;
 }
 
@@ -85,7 +85,7 @@ if (ldr == 0) {
 
 ptaddr=find_ptable(ldr);
 if (ptaddr == 0) {
-  printf("\n Таблица разделов в загрузчике не найдена\n");
+  printf("\n No partition table found in the loader\n");
   return ;
 }
 // читаем текущую таблицу
@@ -107,7 +107,7 @@ if (mflag | xflag) return;
 if (rflag) { 
   in=fopen(ptfile,"rb");
   if (in == 0) {
-    printf("\n Ошибка открытия файла %s",ptfile);
+    printf("\n Error opening file %s",ptfile);
     return;
   }
   fread(&ptable,sizeof(ptable),1,in);
@@ -115,7 +115,7 @@ if (rflag) {
   
   // проверяем файл
   if (memcmp(ptable.head,headmagic,16) != 0) {
-    printf("\n Входной файл не является таблицей разделов\n");
+    printf("\n The input file is not a partition table\n");
     return;
   }
   fseek(ldr,ptaddr,SEEK_SET);

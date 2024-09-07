@@ -59,16 +59,16 @@ printf("\n Программа для автоматического патча �
   }
 }  
 
-printf("\n Программа автоматической модификации загрузчиков Balong V7, (c) forth32");
+printf("\n Program of automatic modification of Balong V7 loaders, (c) forth32");
 
  if (optind>=argc) {
-    printf("\n - Не указано имя файла для загрузки\n - Для подсказки укажите ключ -h\n");
+    printf("\n - No file name specified for downloading \n - Specify the -h key for prompting\n");
     return;
 }  
     
 in=fopen(argv[optind],"rb");
 if (in == 0) {
-  printf("\n Ошибка открытия файла %s",argv[optind]);
+  printf("\n Error opening file %s",argv[optind]);
   return;
 }
 
@@ -86,49 +86,49 @@ fclose(in);
 
 res=pv7r1(buf, fsize);
 if (res != 0)  {
-  printf("\n* Найдена сигнатура типа V7R1 по смещению %08x",res);
+  printf("\n* Found V7R1 type signature at offset %08x",res);
   goto endpatch;
 }  
 
 res=pv7r2(buf, fsize);
 if (res != 0)  {
-  printf("\n* Найдена сигнатура типа V7R2 по смещению %08x",res);
+  printf("\n* Found V7R2 type signature at offset %08x",res);
   goto endpatch;
 }  
 
 res=pv7r11(buf, fsize);
 if (res != 0)  {
-  printf("\n* Найдена сигнатура типа V7R11 по смещению %08x",res);
+  printf("\n* Found V7R11 type signature at offset %08x",res);
   goto endpatch;
 }   
 
 res=pv7r22(buf, fsize);
 if (res != 0)  {
-  printf("\n* Найдена сигнатура типа V7R22 по смещению %08x",res);
+  printf("\n* Found V7R22 type signature at offset %08x",res);
   goto endpatch;
 }  
 
 res=pv7r22_2(buf, fsize);
 if (res != 0)  {
-  printf("\n* Найдена сигнатура типа V7R22_2 по смещению %08x",res);
+  printf("\n* Found V7R22_2 type signature at offset %08x",res);
   goto endpatch;
 }
 
 res=pv7r22_3(buf, fsize);
 if (res != 0)  {
-  printf("\n* Найдена сигнатура типа V7R22_3 по смещению %08x",res);
+  printf("\n* Found V7R22_3 type signature at offset %08x",res);
   goto endpatch;
 }
 
-printf("\n! Сигнатура eraseall-патча не найдена");
+printf("\n! No eraseall-patch signature found");
 
 //==================================================================================
 endpatch:
 
 if (bflag) {
    res=perasebad(buf, fsize);
-   if (res != 0) printf("\n* Найдена сигнатура isbad по смещению %08x",res);  
-   else  printf("\n! Сигнатура isbad не найдена");  
+   if (res != 0) printf("\n* Found isbad signature at offset %08x",res);  
+   else  printf("\n! The isbad signature was not found");  
 }
 
 if (oflag) {
@@ -137,7 +137,7 @@ if (oflag) {
     fwrite(buf,1,fsize,out);
     fclose(out);
   }
-  else printf("\n Ошибка открытия выходного файла %s",outfilename);
+  else printf("\n Error opening output file %s",outfilename);
 }
 free(buf);
 printf("\n");

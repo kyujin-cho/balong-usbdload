@@ -29,13 +29,13 @@ struct ptable_t ptable;
 FILE* in;
 
 if (argc != 2) {
-    printf("\n - Не указано имя файла с таблицей разделов\n");
+    printf("\n - Partition table file name is not specified\n");
     return;
 }  
 
 in=fopen(argv[optind],"r+b");
 if (in == 0) {
-  printf("\n Ошибка открытия файла %s\n",argv[optind]);
+  printf("\n Error opening file %s\n",argv[optind]);
   return;
 }
 
@@ -44,7 +44,7 @@ if (in == 0) {
 fread(&ptable,sizeof(ptable),1,in);
 
 if (strncmp(ptable.head, "pTableHead", 16) != 0) {
-  printf("\n Файл не является таблицей разделов\n");
+  printf("\n The file is not a partition table\n");
   return ;
 }
   

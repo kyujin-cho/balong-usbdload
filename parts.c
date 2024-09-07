@@ -37,8 +37,8 @@ void show_map(struct ptable_t ptable) {
 
 int pnum;
   
-printf("\n Версия таблицы разделов: %16.16s",ptable.version);
-printf("\n Версия прошивки:         %16.16s\n",ptable.product);
+printf("\n Partition table version: %16.16s",ptable.version);
+printf("\n Firmware version: %16.16s\n",ptable.product);
 
 printf("\n ## ----- NAME ----- start  len  loadsize loadaddr  entry    flags    type     count\n------------------------------------------------------------------------------------------");
 
